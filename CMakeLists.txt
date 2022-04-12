@@ -31,8 +31,9 @@ target_link_libraries(
     sfml-graphics
     sfml-window
 )
-target_compile_options(out PUBLIC -Werror=non-virtual-dtor -O3)
-target_link_options(out PUBLIC -lGLEW -lGLU -lGL)
+# target_compile_options(out PUBLIC -Werror=non-virtual-dtor -O3)
+target_compile_options(out PUBLIC -Werror=non-virtual-dtor -fsanitize=address)
+target_link_options(out PUBLIC -lGLEW -lGLU -lGL -fsanitize=address)
 
 target_include_directories(out PRIVATE ${PYTHON_INCLUDE_DIRS})
 target_link_libraries(out ${PYTHON_LIBRARIES})
