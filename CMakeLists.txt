@@ -11,6 +11,7 @@ add_executable(
     out
     src/main.cpp
     src/math/Transform.cpp
+    src/math/PerlinNoise.cpp
     src/gui/Application.cpp
     src/gui/Button.cpp
     src/gui/ColorPicker.cpp
