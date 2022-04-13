@@ -36,7 +36,8 @@ public:
         HILLS,
         HIGHTLANDS,
         MOUNTAINS,
-        HIGHMOUNTAINS
+        HIGHMOUNTAINS,
+        DEFAULT
     };
 
     enum class HumidityType{
@@ -44,7 +45,8 @@ public:
         WET,
         MEDIOCRE,
         DRY,
-        DROUGHT
+        DROUGHT,
+        DEFAULT
     };
 
     enum class TemperatureType{
@@ -55,13 +57,61 @@ public:
         MEDIOCRE,
         WARM,
         HOT,
-        BOILING
+        BOILING,
+        DEFAULT
     };
 
     enum class Biome{
-        
+        DEEPOCEAN_COLD,
+        DEEPOCEAN,
+        DEEPOCEAN_WARM,
+        OCEAN_COLD,
+        OCEAN,
+        OCEAN_WARM,
+        FROZEN_SHALLOW,
+        SEASHORE,
+        WARM_SEA,
+        FJORD,
+        GRAVEL_BEACH,
+        BEACH,
+        SEASHORE_FOREST,
+        ICE_PLAINS,
+        TUNDRA,
+        TAIGA,
+        PLAINS,
+        COLD_FOREST,
+        FOREST,
+        DRY_FOREST,
+        SAVANNA,
+        SEMIDESERT,
+        DESERT,
+        JUNGLE,
+        STEPPE,
+        ICE_PLAINS_HILLS,
+        TUNDRA_HILLS,
+        TAIGA_HILLS,
+        HILLS,
+        COLD_FOREST_HILLS,
+        FOREST_HILLS,
+        DRY_FOREST_HILLS,
+        SAVANNA_HILLS,
+        SEMIDESERT_HILLS,
+        DESERT_HILLS,
+        JUNGLE_HILLS,
+        STEPPE_HILLS,
+        ICY_MOUNTAINS,
+        COLD_MOUNTAINS,
+        MOUNTAINS,
+        HIGH_MOUNTAINS,
+        SEMIDESERT_MOUNTAINS,
+        DESERT_MOUNTAINS,
+        JUNGLE_MOUNTAINS,
+        DEFAULT
     };
 
     World(sf::Vector2u size, unsigned terrain_seed, unsigned humidity_seed, unsigned temperature_seed);
     void draw(sf::RenderWindow& window) const;
+
+private:
+    Biome m_get_biome(TerrainType terrain_type, HumidityType humidity_type, TemperatureType temperature_type) const;
 };

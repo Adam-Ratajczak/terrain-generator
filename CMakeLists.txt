@@ -11,6 +11,7 @@ add_executable(
     out
     src/main.cpp
     src/World.cpp
+    src/Biome.cpp
     src/gui/Application.cpp
     src/gui/Button.cpp
     src/gui/ColorPicker.cpp
