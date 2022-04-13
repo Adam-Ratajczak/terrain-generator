@@ -3,8 +3,10 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/Vector2.hpp>
+#include <SFML/Window/Event.hpp>
 #include <vector>
 #include "math/PerlinNoise.hpp"
+#include "math/Vector2.hpp"
 
 class World{
 private:
@@ -23,10 +25,11 @@ private:
 
     void m_recalculate();
     sf::Color m_get_coord_color(unsigned x, unsigned y) const;
-    sf::Texture m_cal_texture(sf::Vector2u sizes) const;
+    sf::Texture m_cal_texture(Vector2 sizes) const;
 
     sf::Texture m_texture;
-    bool m_changed = true;
+    bool m_changed = true, m_dragging = false, m_display_info = false;
+    Vector2 m_prev_mouse_pos, m_offset, m_info_pos;
 
 public:
 
@@ -72,6 +75,7 @@ public:
 
     World(sf::Vector2u size, unsigned terrain_seed, unsigned humidity_seed, unsigned temperature_seed);
     void draw(sf::RenderWindow& window);
+    void handle_effect(sf::Event& event);
 
 private:
     Biome m_get_biome(TerrainType terrain_type, HumidityType humidity_type, TemperatureType temperature_type) const;

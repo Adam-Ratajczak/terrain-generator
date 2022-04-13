@@ -20,10 +20,8 @@ int main(){
                 window.close();
         }
 
-        window.clear();
+        world.handle_effect(event);
 
         world.draw(window);
-
-        window.display();
     }
 }
