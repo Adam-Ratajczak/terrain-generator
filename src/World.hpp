@@ -25,93 +25,56 @@ private:
     sf::Color m_get_coord_color(unsigned x, unsigned y) const;
     sf::Texture m_cal_texture(sf::Vector2u sizes) const;
 
+    sf::Texture m_texture;
+    bool m_changed = true;
+
 public:
 
     enum class TerrainType{
-        DEEPOCEAN,
-        OCEAN,
-        SEASHORE,
-        COAST,
-        PLAINS,
-        HILLS,
-        HIGHTLANDS,
-        MOUNTAINS,
-        HIGHMOUNTAINS,
-        DEFAULT
+        DEEPOCEAN,      OCEAN,
+        SEASHORE,       COAST,
+        PLAINS,         HILLS,
+        HIGHTLANDS,     MOUNTAINS,
+        HIGHMOUNTAINS,  DEFAULT
     };
 
     enum class HumidityType{
-        WATERY,
-        WET,
-        MEDIOCRE,
-        DRY,
-        DROUGHT,
-        DEFAULT
+        WATERY,         WET,
+        MEDIOCRE,       DRY,
+        DROUGHT,        DEFAULT
     };
 
     enum class TemperatureType{
-        FREEZING,
-        SNOWY,
-        COLD,
-        CHILLY,
-        MEDIOCRE,
-        WARM,
-        HOT,
-        BOILING,
+        FREEZING,       SNOWY,
+        COLD,           CHILLY,
+        MEDIOCRE,       WARM,
+        HOT,            BOILING,
         DEFAULT
     };
 
     enum class Biome{
-        DEEPOCEAN_COLD,
-        DEEPOCEAN,
-        DEEPOCEAN_WARM,
-        OCEAN_COLD,
-        OCEAN,
-        OCEAN_WARM,
-        FROZEN_SHALLOW,
-        SEASHORE,
-        WARM_SEA,
-        FJORD,
-        GRAVEL_BEACH,
-        BEACH,
-        SEASHORE_FOREST,
-        ICE_PLAINS,
-        TUNDRA,
-        TAIGA,
-        PLAINS,
-        COLD_FOREST,
-        FOREST,
-        DRY_FOREST,
-        SAVANNA,
-        SEMIDESERT,
-        DESERT,
-        JUNGLE,
-        STEPPE,
-        ICE_PLAINS_HILLS,
-        TUNDRA_HILLS,
-        TAIGA_HILLS,
-        HILLS,
-        COLD_FOREST_HILLS,
-        FOREST_HILLS,
-        DRY_FOREST_HILLS,
-        SAVANNA_HILLS,
-        SEMIDESERT_HILLS,
-        DESERT_HILLS,
-        JUNGLE_HILLS,
-        STEPPE_HILLS,
-        ICY_MOUNTAINS,
-        COLD_MOUNTAINS,
-        MOUNTAINS,
-        HIGH_MOUNTAINS,
-        SEMIDESERT_MOUNTAINS,
-        DESERT_MOUNTAINS,
-        JUNGLE_MOUNTAINS,
-        DEFAULT
+        DEEPOCEAN_COLD,     DEEPOCEAN,          DEEPOCEAN_WARM,
+        OCEAN_COLD,         OCEAN,              OCEAN_WARM,
+        FROZEN_SHALLOW,     SEASHORE,           WARM_SEA,
+        FJORD,              GRAVEL_BEACH,       BEACH,
+        SEASHORE_FOREST,    ICE_PLAINS,         TUNDRA,
+        TAIGA,              PLAINS,             COLD_FOREST,
+        FOREST,             DRY_FOREST,         SAVANNA,
+        SEMIDESERT,         DESERT,             JUNGLE,
+        STEPPE,             ICE_PLAINS_HILLS,   TUNDRA_HILLS,
+        TAIGA_HILLS,        HILLS,              COLD_FOREST_HILLS,
+        FOREST_HILLS,       DRY_FOREST_HILLS,   SAVANNA_HILLS,
+        SEMIDESERT_HILLS,   DESERT_HILLS,       JUNGLE_HILLS,
+        STEPPE_HILLS,       ICY_MOUNTAINS,      COLD_MOUNTAINS,
+        MOUNTAINS,          HIGH_MOUNTAINS,     SEMIDESERT_MOUNTAINS,
+        DESERT_MOUNTAINS,   JUNGLE_MOUNTAINS,   DEFAULT
     };
 
     World(sf::Vector2u size, unsigned terrain_seed, unsigned humidity_seed, unsigned temperature_seed);
-    void draw(sf::RenderWindow& window) const;
+    void draw(sf::RenderWindow& window);
 
 private:
     Biome m_get_biome(TerrainType terrain_type, HumidityType humidity_type, TemperatureType temperature_type) const;
+    void m_recalculate_biomes();
+    std::vector<std::vector<sf::Color>> m_biomes;
 };
