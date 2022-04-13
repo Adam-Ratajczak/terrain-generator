@@ -10,8 +10,7 @@ find_package(PythonLibs 3.5 REQUIRED)
 add_executable(
     out
     src/main.cpp
-    src/math/Transform.cpp
-    src/math/PerlinNoise.cpp
+    src/World.cpp
     src/gui/Application.cpp
     src/gui/Button.cpp
     src/gui/ColorPicker.cpp
