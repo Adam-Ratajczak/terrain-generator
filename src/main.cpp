@@ -11,7 +11,7 @@ int main(){
 
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Terrain generator");
     auto sizes = window.getSize();
-    World world(sf::Vector2u(2000, 2000), 1000, 20000, 300000);
+    World world(sf::Vector2u(3000, 3000), 1000, 20000, 300000);
 
     while(window.isOpen()){
         sf::Event event;

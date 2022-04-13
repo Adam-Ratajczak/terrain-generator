@@ -30,6 +30,7 @@ private:
     sf::Texture m_texture;
     bool m_changed = true, m_dragging = false, m_display_info = false;
     Vector2 m_prev_mouse_pos, m_offset, m_info_pos;
+    float m_zoom = 1;
 
 public:
 
@@ -74,7 +75,7 @@ public:
     };
 
     World(sf::Vector2u size, unsigned terrain_seed, unsigned humidity_seed, unsigned temperature_seed);
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
     void handle_effect(sf::Event& event);
 
 private:
